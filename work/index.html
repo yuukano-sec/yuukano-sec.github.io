@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work - Yuukano</title>
+    <meta name="description" content="Portfolio professionnel de Theo - Cybersecurity Student & IT Infrastructure Admin">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: white;
+            line-height: 1.6;
+        }
+        
+        /* Header avec retour */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: #00d4ff;
+            transform: translateX(-5px);
+        }
+        
+        /* Container principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+        
+        /* Hero section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 4rem;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #00d4ff;
+            padding-left: 1.5rem;
+        }
+        
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Grid layouts */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill-badge {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .skill-badge:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+        
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+        
+        .project-card p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Timeline certifications */
+        .cert-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .cert-item {
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #00d4ff;
+        }
+        
+        .cert-item strong {
+            color: #00d4ff;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact links */
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background: #00d4ff;
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 6rem 1.5rem 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header fixe -->
+    <div class="header">
+        <a href="../" class="back-link">
+            <span>←</span> Retour
+        </a>
+    </div>
+    
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>PORTFOLIO</h1>
+            <p class="subtitle">Cybersecurity Student | IT Infrastructure Administrator</p>
+        </div>
+        
+        <!-- About -->
+        <div class="section">
+            <h2>À propos</h2>
+            <p>
+                Administrateur Infrastructure IT chez StimStudio, gérant 19TB de données pour 120+ employés.
+                Actuellement en fin de certification AIS (Administrateur d'Infrastructures Sécurisées) et préparation 
+                du Master Cybersécurité à CSB School avec alternance chez Crédit Agricole Annecy.
+            </p>
+            <p>
+                Spécialisé en virtualisation VMware ESXi, Windows Server (AD, DFS, PKI), infrastructure Linux 
+                et durcissement sécurité. Passionné par la cybersécurité offensive et défensive.
+            </p>
+        </div>
+        
+        <!-- Tech Stack -->
+        <div class="section">
+            <h2>Compétences Techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-badge">Linux (Ubuntu, Kubuntu, Kali)</div>
+                <div class="skill-badge">Windows Server (AD, DFS, PKI)</div>
+                <div class="skill-badge">VMware ESXi</div>
+                <div class="skill-badge">Docker</div>
+                <div class="skill-badge">Samba</div>
+                <div class="skill-badge">Python</div>
+                <div class="skill-badge">Bash Scripting</div>
+                <div class="skill-badge">Nmap</div>
+                <div class="skill-badge">Wireshark</div>
+                <div class="skill-badge">Burp Suite</div>
+                <div class="skill-badge">Metasploit</div>
+                <div class="skill-badge">Git/GitHub</div>
+                <div class="skill-badge">Centreon / Zabbix</div>
+                <div class="skill-badge">GLPI</div>
+                <div class="skill-badge">Active Directory</div>
+                <div class="skill-badge">Vaultwarden</div>
+            </div>
+        </div>
+        
+        <!-- Certifications -->
+        <div class="section">
+            <h2>Certifications & Formation</h2>
+            <ul class="cert-list">
+                <li class="cert-item">
+                    <strong>AIS - Administrateur d'Infrastructures Sécurisées</strong><br>
+                    2iAcademy | Soutenance avril 2025
+                </li>
+                <li class="cert-item">
+                    <strong>Master Cybersécurité (en cours)</strong><br>
+                    CSB School | Alternance CA Annecy | Sept 2025 - 2027
+                </li>
+                <li class="cert-item">
+                    <strong>En préparation</strong><br>
+                    EBIOS Risk Manager | ISO 27001 Lead Implementer | CISSP
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Projects -->
+        <div class="section">
+            <h2>Projets Principaux</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Infrastructure DFS - StimStudio</h3>
+                    <p>
+                        Architecture distribuée pour 19TB de données animation avec Windows DFS namespace 
+                        et serveurs backend Samba Linux. Optimisation performances pour 120+ postes et fermes de rendu.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Migration GLPI Agent</h3>
+                    <p>
+                        Migration complète de FusionInventory (deprecated) vers GLPI Agent sur l'ensemble 
+                        du parc workstations. Automatisation déploiement et inventaire matériel.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Hardening Active Directory</h3>
+                    <p>
+                        Durcissement sécurité AD avec méthodologie AGDLP, LAPS deployment, et implémentation 
+                        PKI complète Windows Server pour gestion certificats.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Homelab Cybersec</h3>
+                    <p>
+                        Lab personnel avec Kali Linux, VMs vulnérables (Metasploitable), monitoring réseau, 
+                        et pratique TryHackMe/HackTheBox pour apprentissage pentesting.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Vaultwarden Self-Hosted</h3>
+                    <p>
+                        Déploiement gestionnaire mots de passe self-hosted avec Docker, reverse proxy Nginx, 
+                        et SSL Let's Encrypt pour sécurisation entreprise.
+                    </p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Scripts Automation</h3>
+                    <p>
+                        Collection scripts Python et Bash pour automatisation tâches admin système, 
+                        monitoring infrastructure, et outils cybersécurité custom.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Experience -->
+        <div class="section">
+            <h2>Expérience Professionnelle</h2>
+            <div class="cert-item">
+                <strong>Administrateur Infrastructure IT</strong><br>
+                StimStudio, Lyon | 2023 - 2025 (Alternance)<br>
+                • Gestion infrastructure 120+ employés, 19TB données animation<br>
+                • Administration VMware ESXi, Windows Server, Samba<br>
+                • Projets DFS, monitoring Centreon/Zabbix, sécurité AD<br>
+                • Support utilisateurs et résolution incidents niveau 2/3
+            </div>
+        </div>
+        
+        <!-- Contact -->
+        <div class="section" style="text-align: center;">
+            <h2>Contact & Liens</h2>
+            <div class="contact-links">
+                <a href="https://github.com/yuukano-sec" class="btn" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/theo-yuukano" class="btn" target="_blank">LinkedIn</a>
+                <a href="mailto:contact@yuukano.com" class="btn">Email</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
