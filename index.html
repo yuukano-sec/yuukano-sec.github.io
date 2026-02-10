@@ -3,132 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuukano | Bienvenue</title>
+    <title>Yuukano | Cybersecurity & Life</title>
+    <meta name="description" content="Portfolio de Theo - Cybersecurity Student & IT Infrastructure Admin">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <style>
         :root {
-            --dark: #0f172a;
-            --pro-color: #38bdf8; /* Bleu pro */
-            --passion-color: #f472b6; /* Rose/Violet passion */
             --text: #ffffff;
+            --overlay-dark: rgba(0, 0, 0, 0.5);
         }
-
-        body, html {
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
             height: 100%;
-            font-family: 'Inter', system-ui, sans-serif;
-            background-color: var(--dark);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
             color: var(--text);
             overflow: hidden;
         }
-
+        
         .container {
             display: flex;
             height: 100vh;
             width: 100%;
-            transition: all 0.5s ease;
+            position: relative;
         }
-
-        /* Style des deux grandes sections */
+        
         .section {
             flex: 1;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-decoration: none;
             color: white;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.7s cubic-bezier(0.2, 1, 0.3, 1);
             position: relative;
-            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
         }
-
-        /* Section PRO */
-        .pro { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
-        .pro:hover { flex: 1.5; background: #1e293b; }
-        .pro::before { content: "WORK"; position: absolute; font-size: 10vw; font-weight: 900; opacity: 0.03; }
-
-        /* Section PASSIONS */
-        .passions { background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%); }
-        .passions:hover { flex: 1.5; background: #312e81; }
-        .passions::before { content: "LIFE"; position: absolute; font-size: 10vw; font-weight: 900; opacity: 0.03; }
-
-        /* Contenu des blocs */
+        
+        /* === IMAGES DE FOND === */
+        .work { 
+            background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2000');
+        }
+        
+        .life { 
+            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=2000');
+        }
+        
+        /* Overlay sombre pour lisibilité */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-dark);
+            transition: background 0.5s ease;
+            z-index: 1;
+        }
+        
+        .section:hover .overlay {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Expansion au hover */
+        .section:hover {
+            flex: 1.5;
+        }
+        
         .content {
             z-index: 2;
             text-align: center;
-            padding: 20px;
+            pointer-events: none;
         }
-
-        .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
+        
         h2 {
-            font-size: 2.5rem;
+            font-size: clamp(2.5rem, 8vw, 6rem);
             margin: 0;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 15px;
+            font-weight: 900;
+            text-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+            transition: transform 0.5s ease;
         }
-
-        p {
-            opacity: 0.7;
-            font-weight: 300;
-            margin-top: 10px;
+        
+        .section:hover h2 {
+            transform: scale(1.1);
         }
-
-        /* Petit cercle au centre avec ton nom */
+        
+        /* === LOGO CORBEAU AVEC SLIDE === */
         .center-logo {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: var(--text);
-            color: var(--dark);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
             z-index: 10;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            border: 8px solid var(--dark);
+            pointer-events: none;
+            
+            /* Smooth slide transition */
+            transition: all 0.7s cubic-bezier(0.2, 1, 0.3, 1);
         }
-
-        /* Responsive pour téléphone */
+        
+        .center-logo img {
+            height: 130px;
+            width: auto;
+            
+            /* Glow mixte pour visibilité sur fonds clair ET sombre */
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8))
+                    drop-shadow(0 0 30px rgba(255, 255, 255, 0.5))
+                    drop-shadow(0 0 50px rgba(255, 255, 255, 0.3))
+                    drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+            
+            transition: all 0.5s ease;
+        }
+        
+        /* Zoom subtle au hover du logo */
+        .center-logo:hover img {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 1))
+                    drop-shadow(0 0 50px rgba(255, 255, 255, 0.7))
+                    drop-shadow(0 0 80px rgba(255, 255, 255, 0.5));
+        }
+        
+        /* === SLIDE ANIMATIONS INVERSÉES + RÉDUITES === */
+        
+        /* Quand WORK est hover → logo slide VERS WORK (droite dans ton cas) */
+        .container:has(.work:hover) .center-logo {
+            left: 60%; /* Réduit + inversé */
+        }
+        
+        /* Quand LIFE est hover → logo slide VERS LIFE (gauche dans ton cas) */
+        .container:has(.life:hover) .center-logo {
+            left: 40%; /* Réduit + inversé */
+        }
+        
+        /* Augmente glow quand un côté est hover */
+        .container:has(.section:hover) .center-logo img {
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.9))
+                    drop-shadow(0 0 40px rgba(255, 255, 255, 0.6))
+                    drop-shadow(0 0 70px rgba(255, 255, 255, 0.4))
+                    drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
+        }
+        
+        /* === RESPONSIVE MOBILE === */
         @media (max-width: 768px) {
-            .container { flex-direction: column; }
-            .section:hover { flex: 1; }
-            h2 { font-size: 1.8rem; }
-            .center-logo { width: 60px; height: 60px; font-size: 0.8rem; }
+            .container {
+                flex-direction: column;
+            }
+            
+            h2 {
+                font-size: 3rem;
+                letter-spacing: 8px;
+            }
+            
+            .center-logo img {
+                height: 100px;
+            }
+            
+            /* Logo reste centré horizontalement sur mobile */
+            .container:has(.work:hover) .center-logo,
+            .container:has(.life:hover) .center-logo {
+                left: 50%;
+            }
+            
+            /* Slide vertical sur mobile */
+            .container:has(.work:hover) .center-logo {
+                top: 35%;
+            }
+            
+            .container:has(.life:hover) .center-logo {
+                top: 65%;
+            }
+        }
+        
+        /* Très petits écrans */
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 2.5rem;
+                letter-spacing: 5px;
+            }
+            
+            .center-logo img {
+                height: 80px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="center-logo">YUUKA</div>
-
     <div class="container">
-        <a href="pro.html" class="section pro">
+        <a href="work.html" class="section work">
+            <div class="overlay"></div>
             <div class="content">
-                <span class="icon">💼</span>
-                <h2>Côté Pro</h2>
-                <p>Compétences & Expériences</p>
+                <h2>Work</h2>
             </div>
         </a>
-
-        <a href="passions.html" class="section passions">
+        
+        <a href="life.html" class="section life">
+            <div class="overlay"></div>
             <div class="content">
-                <span class="icon">🎨</span>
-                <h2>Passions</h2>
-                <p>Ce qui me fait vibrer</p>
+                <h2>Life</h2>
             </div>
         </a>
+        
+        <!-- Logo corbeau qui slide -->
+        <div class="center-logo">
+            <img src="assets/images/yuukano-logo.png" alt="Yuukano">
+        </div>
     </div>
-
 </body>
 </html>
